@@ -73,6 +73,15 @@ public class Task {
 	}
 
 	/**
+	 * Get the relative deadline for this task
+	 *
+	 * @return the relative deadline
+	 */
+	public int getRelDeadline() {
+		return relDeadline;
+	}
+
+	/**
 	 * Simulate execution by one time tick
 	 * 
 	 * Requires: getRemProcessingTime( ) > 0 Modifies: this Task Effects: Reduce

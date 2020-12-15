@@ -1,0 +1,29 @@
+package schedulers;
+import java.util.*;
+
+public class SchedulerTest {
+
+    public static void main(String[] args){
+        Scheduler scheduler1 = new EDFScheduler();
+        Scheduler scheduler2 = new SRPTScheduler();
+        Set<Task> taskSet = Set.of(
+                new Task(5, 19),
+                new Task(6,11),
+                new Task(3, 12)
+        );
+
+        for(Task t : taskSet){
+            scheduler1.addTask(t);
+            scheduler2.addTask(t);
+        }
+
+        for(int time = 0; time < 20; time++){
+            System.out.printf("scheduler %d tick %-3d: %d \n", 1, time, scheduler1.currentTaskID());
+            System.out.printf("scheduler %d tick %-3d: %d \n", 2, time, scheduler2.currentTaskID());
+            scheduler1.tick();
+            scheduler2.tick();
+
+        }
+    }
+}
+
