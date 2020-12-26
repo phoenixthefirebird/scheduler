@@ -1,9 +1,19 @@
 package ui;
 
+import schedulers.DMScheduler;
+import schedulers.EDFScheduler;
+import schedulers.SRPTScheduler;
+import schedulers.Task;
+
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class Scheduler {
@@ -12,11 +22,51 @@ public class Scheduler {
     private JComboBox dropDown;
     private JProgressBar progressBar1;
     private JList taskList;
+    private DefaultListModel<String> displayTasks;
     private JTextField taskName;
     private JTextField RemTime;
     private JTextField relDeadline;
     private JButton saveButton;
     private JButton tickButton;
+
+    private int type;
+    private DMScheduler dmScheduler;
+    private EDFScheduler edfScheduler;
+    private SRPTScheduler srptScheduler;
+
+
+    public Scheduler() {
+        displayTasks = new DefaultListModel<>();
+        taskList.setModel(displayTasks);
+        tickButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        dropDown.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        taskList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+
+            }
+        });
+    }
+
+    public void saveTask(Task task){
+        displayTasks.addElement(task.getTaskName());
+    }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Take control of Your Time!");

@@ -5,10 +5,10 @@ import java.util.PriorityQueue;
 
 public abstract class AbstractScheduler implements Scheduler{
     //this is time
-    private int ticks;
-    private Task currentTask;
+    private static int ticks;
+    private static Task currentTask;
     //this queue orders the elements automatically
-    private PriorityQueue<Task> queue;
+    private static PriorityQueue<Task> queue;
     private static final int IDLE_TASK_ID = 0;
 
     public AbstractScheduler(Comparator<Task> comparator){

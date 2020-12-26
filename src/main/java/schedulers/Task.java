@@ -9,6 +9,7 @@ public class Task {
 								// scheduler
 	private int absDeadline; // the absolute deadline (releaseTime+relDeadline)
 	private final int taskID; // the task identifier
+	private final String taskName;
 	private static int taskCounter; // counts the # of tasks created
 
 	/**
@@ -17,6 +18,14 @@ public class Task {
 	 */
 	public int getTaskID() {
 		return taskID;
+	}
+
+	/**
+	 * Get task name
+	 * @return the task's name
+	 */
+	public String getTaskName() {
+		return taskName;
 	}
 	
 	/**
@@ -27,10 +36,11 @@ public class Task {
 	 * @param relDeadline
 	 *            > 0, and also > procTime
 	 */
-	public Task(int procTime, int relDeadline) {
+	public Task(int procTime, int relDeadline, String taskName) {
 		this.procTime = procTime;
 		this.relDeadline = relDeadline;
 		remProcTime = procTime;
+		this.taskName = taskName;
 		releaseTime = -1; // to indicate that the task has not been added to the
 							// ready queue yet
 		taskID = ++taskCounter;

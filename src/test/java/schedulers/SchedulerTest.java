@@ -7,9 +7,9 @@ public class SchedulerTest {
         Scheduler scheduler1 = new EDFScheduler();
         Scheduler scheduler2 = new SRPTScheduler();
         Set<Task> taskSet = Set.of(
-                new Task(5, 19),
-                new Task(6,11),
-                new Task(3, 12)
+                new Task(5, 19, "people"),
+                new Task(6,11, "are"),
+                new Task(3, 12, "birds")
         );
 
         for(Task t : taskSet){
