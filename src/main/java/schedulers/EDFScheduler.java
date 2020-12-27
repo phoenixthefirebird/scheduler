@@ -1,7 +1,5 @@
 package schedulers;
 
-import java.util.PriorityQueue;
-
 public class EDFScheduler extends AbstractScheduler{
 
     public EDFScheduler(){

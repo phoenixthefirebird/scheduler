@@ -8,7 +8,7 @@ public interface Scheduler {
 	 * 
 	 * @return number of ticks since Scheduler creation
 	 */
-	public int getTime();
+	int getTime();
 
 	/**
 	 * Add a new task for the scheduler
@@ -17,7 +17,7 @@ public interface Scheduler {
 	 *            the task to be added
 	 * @return true if successful, false otherwise
 	 */
-	public boolean addTask(Task t);
+	boolean addTask(Task t);
 
 	/**
 	 * Remove a task from the scheduler
@@ -26,7 +26,7 @@ public interface Scheduler {
 	 *            the task to be removed
 	 * @return true if successful, false otherwise
 	 */
-	public boolean delTask(Task t);
+	boolean delTask(Task t);
 
 	/**
 	 * Get the task id of the current highest priority task
@@ -35,7 +35,7 @@ public interface Scheduler {
 	 *         scheduler has nothing to do (idle) then return the 0 to indicate
 	 *         idle task.
 	 */
-	public int currentTaskID();
+	int currentTaskID();
 
 	/**
 	 * Respond to a clock tick.
@@ -46,6 +46,6 @@ public interface Scheduler {
 	 * 
 	 * This method also updates the scheduler's time.
 	 */
-	public void tick();
+	void tick();
 
 }

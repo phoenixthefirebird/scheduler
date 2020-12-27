@@ -1,18 +1,18 @@
 package schedulers;
 
 import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.TreeSet;
 
 public abstract class AbstractScheduler implements Scheduler{
     //this is time
     private static int ticks;
     private static Task currentTask;
     //this queue orders the elements automatically
-    private static PriorityQueue<Task> queue;
+    private static TreeSet<Task> queue;
     private static final int IDLE_TASK_ID = 0;
 
     public AbstractScheduler(Comparator<Task> comparator){
-        queue = new PriorityQueue<>(5,comparator);
+        queue = new TreeSet<>(comparator);
     }
 
     public int getTime(){
@@ -26,13 +26,13 @@ public abstract class AbstractScheduler implements Scheduler{
             t.release(ticks);
         }
         boolean result = queue.add(t);
-        currentTask = queue.peek(); //looking at the highest priority item
+        currentTask = queue.first(); //looking at the highest priority item
         return result;
     }
 
     public boolean delTask(Task t){
         boolean result = queue.remove(t);
-        currentTask = queue.peek();
+        currentTask = queue.first();
         return result;
     }
 
@@ -44,7 +44,7 @@ public abstract class AbstractScheduler implements Scheduler{
     }
 
     public void tick(){
-        currentTask = queue.peek();
+        currentTask = queue.first();
         ++ticks;
         if(currentTask != null) {
             currentTask.oneTick();
@@ -52,6 +52,6 @@ public abstract class AbstractScheduler implements Scheduler{
                 queue.remove(currentTask);
             }
         }
-        currentTask = queue.peek();
+        currentTask = queue.first();
     }
 }
