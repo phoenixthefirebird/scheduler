@@ -4,8 +4,8 @@ import java.util.*;
 public class SchedulerTest {
 
     public static void main(String[] args){
-        Scheduler scheduler1 = new EDFScheduler();
-        Scheduler scheduler2 = new SRPTScheduler();
+        Scheduler scheduler1 = new EDFScheduler(0);
+        Scheduler scheduler2 = new SRPTScheduler(0);
         Set<Task> taskSet = Set.of(
                 new Task(5, 19, "people"),
                 new Task(6,11, "are"),

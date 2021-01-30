@@ -2,7 +2,7 @@ package schedulers;
 
 public class EDFScheduler extends AbstractScheduler{
 
-    public EDFScheduler(){
+    public EDFScheduler(int ticks){
         super((t1, t2) -> {
             int diff;
             try{
@@ -11,7 +11,7 @@ public class EDFScheduler extends AbstractScheduler{
                 diff = 0;
             }
             return diff;
-        });
+        }, ticks);
     }
 
 }
